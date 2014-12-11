@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+<!--  To run the page put in browser: http://localhost:8080/first/faces/StartPage.xhtml By default this will engage
+FacesServlet, which knows how to properly interpret all JFS tags -->
+
+<!--
+1. Add constraints to the bean
+2. Where to put processing logic when working with JSF? Should it just call another servlet?
+3. How to store information? In Array or in DB?
+4.   -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:composition template="Template.xhtml">
+	
+		<ui:define name="content">
+			    
+		    <h:form>
+		    	<h:outputText value="Contract name"/>
+		    	<h:inputText value="#{contractController.contract.name}" title="name" id="name" /> <br/>
+		    	
+				<h:outputText value="Contract ID:"/>
+				<h:inputText value="#{contractController.contract.contractid}" title="contractid" id="contractID"/> <br/>
+				
+				<h:commandButton action="#{contractController.addContract}" value="Add contract" /> <br/>
+				
+				<h:form>
+    				<h:link outcome="ListContracts.xhtml" value="Show all contracts"/>
+    			</h:form>
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>
