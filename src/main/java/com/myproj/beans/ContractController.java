@@ -23,16 +23,20 @@ public class ContractController {
 	private Contract contract = new Contract();
 	private List <Contract> contractList = new ArrayList<Contract>();
 	private List <Contract> contractListSearched = new ArrayList<Contract>();
-	private String ConNameToSearch;
+	private String conNameToSearch;
 	
 	public List <Contract> getContractList(){
-		contractList = contractEJB.findContracts();
+		contractList = contractEJB.findAllContracts();
 		return contractList;
 	}
 	
 	public List <Contract> getContractListSearched(){
-		contractListSearched = contractEJB.findContracts();
+		contractListSearched = contractEJB.findSearchedContracts(conNameToSearch);
 		return contractListSearched;
+	}
+	
+	public String findContractListSearched(){
+		return "SingleContract.xhtml";
 	}
 	
 	public String addContract(){
@@ -49,21 +53,16 @@ public class ContractController {
 	}
 	
 	public String getConNameToSearch() {
-		return ConNameToSearch;
+		return conNameToSearch;
 	}
 
 	public void setConNameToSearch(String conNameToSearch) {
-		ConNameToSearch = conNameToSearch;
+		this.conNameToSearch = conNameToSearch;
 	}
 
 	public String removeContract(Contract con){
 		contractEJB.removeContract(con);
 		return "ListContracts.xhtml";
-	}
-	
-	public String findContract(String searchPattern){
-		
-		return "SingleContract.xhtml";
 	}
 		
 }

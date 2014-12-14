@@ -20,6 +20,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import com.myproj.model.Contract;
@@ -40,9 +41,16 @@ public class ContractEJB {
     	
     }
     
-    public List<Contract> findContracts(){
+    public List<Contract> findAllContracts(){
         TypedQuery<Contract> query = em.createNamedQuery("Contract.findAll", Contract.class);        
         return query.getResultList();
+    }
+    
+    public List<Contract> findSearchedContracts(String searchPattern){
+    	System.out.println("Search pattern: " + searchPattern);
+    	//Query query = em.createQuery("SELECT e FROM Contract AS e WHERE e.name = \"my\"");
+        Query query = em.createQuery("SELECT e FROM Contract AS e WHERE e.name = :name").setParameter("name",searchPattern);
+    	return query.getResultList();
     }
     
     public void addNew (Contract con) {
