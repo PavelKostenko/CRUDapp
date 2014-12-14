@@ -36,6 +36,15 @@
                  </h:form>
               </h:column>
               
+              <h:column>
+              <f:facet name="header">
+                  <h:outputText value=""/>
+              </f:facet>
+              	<h:form>
+                  <h:commandLink value="Edit" action="#{contractController.editContract(con)}"/>
+                 </h:form>
+              </h:column>
+              
     </h:dataTable>
     </h:body>
 	</ui:define>

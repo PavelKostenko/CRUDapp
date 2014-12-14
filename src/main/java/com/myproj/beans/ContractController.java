@@ -64,5 +64,16 @@ public class ContractController {
 		contractEJB.removeContract(con);
 		return "ListContracts.xhtml";
 	}
+	
+	public String editContract(Contract con){
+		setContract(con);
+		return "EditContract.xhtml";
+	}
+	
+	public String persistContract(){
+		setConNameToSearch(contract.getName());
+		contractEJB.editContract(contract);
+		return "SingleContract.xhtml";
+	}
 		
 }

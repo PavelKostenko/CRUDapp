@@ -47,7 +47,7 @@ public class ContractEJB {
     }
     
     public List<Contract> findSearchedContracts(String searchPattern){
-    	System.out.println("Search pattern: " + searchPattern);
+    	//System.out.println("Search pattern: " + searchPattern);
     	//Query query = em.createQuery("SELECT e FROM Contract AS e WHERE e.name = \"my\"");
         Query query = em.createQuery("SELECT e FROM Contract AS e WHERE e.name = :name").setParameter("name",searchPattern);
     	return query.getResultList();
@@ -61,5 +61,11 @@ public class ContractEJB {
     public void removeContract(Contract con){
     	//Contract managedEntity = em.find(Contract.class, con.getContractid());
     	em.remove(em.find(Contract.class, con.getContractid()));
+    }
+    
+    public void editContract(Contract con){
+    	System.out.println("Data for the new contract: " + con.getContractid() + " " + con.getName());
+    	Contract managedEntity = em.find(Contract.class, con.getContractid());
+    	managedEntity.setName(con.getName());
     }
 }
