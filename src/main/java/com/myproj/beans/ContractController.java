@@ -36,7 +36,7 @@ public class ContractController {
 	}
 	
 	public String findContractListSearched(){
-		return "SingleContract.xhtml";
+		return "ListSearchedContracts.xhtml";
 	}
 	
 	public String addContract(){
@@ -73,7 +73,7 @@ public class ContractController {
 	public String persistContract(){
 		setConNameToSearch(contract.getName());
 		contractEJB.editContract(contract);
-		return "SingleContract.xhtml";
+		return "ListSearchedContracts.xhtml";
 	}
 		
 }

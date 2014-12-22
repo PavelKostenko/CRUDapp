@@ -28,6 +28,11 @@ import com.myproj.model.Contract;
 /**
  * Session Bean implementation class ContractEJB
  */
+
+/*To do:
+ * - DONE. Implement a search by a substring not by entire exact string
+ * - Autogenerate ID
+ * */
 @Stateless
 public class ContractEJB {
 	
@@ -47,9 +52,7 @@ public class ContractEJB {
     }
     
     public List<Contract> findSearchedContracts(String searchPattern){
-    	//System.out.println("Search pattern: " + searchPattern);
-    	//Query query = em.createQuery("SELECT e FROM Contract AS e WHERE e.name = \"my\"");
-        Query query = em.createQuery("SELECT e FROM Contract AS e WHERE e.name = :name").setParameter("name",searchPattern);
+    	Query query = em.createQuery("SELECT e FROM Contract AS e WHERE e.name LIKE :name").setParameter("name","%" + searchPattern + "%");
     	return query.getResultList();
     }
     
@@ -64,7 +67,6 @@ public class ContractEJB {
     }
     
     public void editContract(Contract con){
-    	System.out.println("Data for the new contract: " + con.getContractid() + " " + con.getName());
     	Contract managedEntity = em.find(Contract.class, con.getContractid());
     	managedEntity.setName(con.getName());
     }
