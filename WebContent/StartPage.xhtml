@@ -23,11 +23,15 @@ FacesServlet, which knows how to properly interpret all JFS tags -->
 		    	<h:outputText value="Contract name"/>
 		    	<h:inputText value="#{contractController.contract.name}" title="name" id="name" /> <br/>
 		    	<br/>
+		    	
+		    	<!-- 
 				<h:outputText value="Contract ID:"/>
 				<h:inputText value="#{contractController.contract.contractid}" title="contractid" id="contractID"/> <br/>
 				<br/>
-				<h:commandButton action="#{contractController.addContract}" value="Add contract" /> <br/>
+				-->
 				
+				<h:commandButton action="#{contractController.addContract}" value="Add contract" /> <br/>
+				 
 			</h:form>
 		</ui:define>
 	</ui:composition>

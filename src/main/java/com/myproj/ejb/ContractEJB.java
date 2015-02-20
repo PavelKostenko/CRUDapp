@@ -31,7 +31,10 @@ import com.myproj.model.Contract;
 
 /*To do:
  * - DONE. Implement a search by a substring not by entire exact string
- * - Autogenerate ID
+ * - DONE. Autogenerate ID
+ * - Correct a bug when "Edit" functionality is not working when clicking "Edit" in "ContractListSearched" page
+ * - Exclude a possibility to correct a contract ID through "Edit" functional (thus possibility of exception if ID exists)
+ * 
  * */
 @Stateless
 public class ContractEJB {

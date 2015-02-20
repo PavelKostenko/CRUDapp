@@ -3,5 +3,8 @@
 	<persistence-unit name="first">
 	<jta-data-source>perKostas</jta-data-source>
 		<class>com.myproj.model.Contract</class>
+		 <properties>
+			 <property name="eclipselink.ddl-generation" value="create-tables"/>
+		 </properties>
 	</persistence-unit>
 </persistence>
